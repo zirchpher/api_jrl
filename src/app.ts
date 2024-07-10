@@ -1,11 +1,13 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes';
+import salidaProductoRoutes from './routes/salidaProductoRoutes';
 //import productoRoutes from './routes/productoRoutes';
 const app = express();
 
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-// app.use('/api', productoRoutes);
+app.use('/api/salidaProducto', salidaProductoRoutes);
+//app.use('/api', productoRoutes);
 
 export default app;
