@@ -6,6 +6,6 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-//app.use('/api', productoRoutes);
+// app.use('/api', productoRoutes);
 
 export default app;
