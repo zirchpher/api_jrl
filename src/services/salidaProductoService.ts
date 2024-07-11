@@ -1,7 +1,7 @@
 import { SalidaProducto } from '../interfaces/salidaProducto';
 import {
   createSalidaProducto,
-  getSalidasProducto,
+  getSalidaProductos,
   getSalidaProductoById,
   updateSalidaProducto,
   deleteSalidaProducto,
@@ -12,7 +12,7 @@ export const addSalidaProducto = async (salidaProducto: SalidaProducto): Promise
 };
 
 export const fetchSalidasProducto = async (): Promise<SalidaProducto[]> => {
-  return await getSalidasProducto();
+  return await getSalidaProductos();
 };
 
 export const fetchSalidaProductoById = async (

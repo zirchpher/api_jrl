@@ -5,14 +5,14 @@ export const createSalidaProducto = async (salidaProducto: SalidaProducto): Prom
   const {
     nombre_salida,
     fecha_salida,
-    estado_salida,
-    metodo_envio,
     id_destino,
+    estado_salida,
     id_empleado,
+    metodo_envio,
   } = salidaProducto;
   await pool.query(
-    'INSERT INTO Salida_Producto (nombre_salida, fecha_salida, estado_salida, metodo_envio, id_destino, id_empleado) VALUES (?, ?, ?, ?, ?, ?)',
-    [nombre_salida, fecha_salida, estado_salida, metodo_envio, id_destino, id_empleado]
+    'INSERT INTO Salida_Producto (nombre_salida, fecha_salida, id_destino, estado_salida, id_empleado, metodo_envio) VALUES (?, ?, ?, ?, ?, ?)',
+    [nombre_salida, fecha_salida, id_destino, estado_salida, id_empleado, metodo_envio]
   );
 };
 
