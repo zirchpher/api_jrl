@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/salidaProducto', salidaProductoRoutes);
 app.use('/api/proveedores', proveedorRoutes);
-app.use('/usuarios', usuariosRouter);
+app.use('/api/usuarios', usuariosRouter);
 //app.use('/api', productoRoutes);
 
 export default app;
