@@ -12,6 +12,7 @@ import notificacionRoutes from './routes/notificacionRoutes';
 import rolRoutes from './routes/rolRoutes';
 import entradaProductoRoutes from './routes/entradaProductoRoutes';
 import detalleEntradaRoutes from './routes/detalleEntradaRoutes';
+import detalleSalidaRoutes from './routes/detalleSalidaRoutes';
 import cors from 'cors';
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/notificaciones', notificacionRoutes);
 app.use('/api/roles', rolRoutes);
 app.use('/api/entrada-productos', entradaProductoRoutes);
 app.use('/api/detalle-entrada', detalleEntradaRoutes);
+app.use('/api/detalle-salida', detalleSalidaRoutes);
 
 
 export default app;
