@@ -8,6 +8,7 @@ import almacenRoutes from './routes/almacenRoutes';
 import productosProveedorRoutes from './routes/productosProveedorRoutes';
 import categoriasRoutes from './routes/categoriaRoutes';
 import destinosRoutes from './routes/destinoRoutes';
+import notificacionRoutes from './routes/notificacionRoutes';
 import cors from 'cors';
 
 const app = express();
@@ -24,6 +25,7 @@ app.use('/api/productosProveedor', productosProveedorRoutes);
 app.use('/api/almacen', almacenRoutes);
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/destinos', destinosRoutes);
+app.use('/api/notificaciones', notificacionRoutes);
 
 
 export default app;
