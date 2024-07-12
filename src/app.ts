@@ -10,6 +10,7 @@ import categoriasRoutes from './routes/categoriaRoutes';
 import destinosRoutes from './routes/destinoRoutes';
 import notificacionRoutes from './routes/notificacionRoutes';
 import rolRoutes from './routes/rolRoutes';
+import entradaProductoRoutes from './routes/entradaProductoRoutes';
 import cors from 'cors';
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api/categorias', categoriasRoutes);
 app.use('/api/destinos', destinosRoutes);
 app.use('/api/notificaciones', notificacionRoutes);
 app.use('/api/roles', rolRoutes);
+app.use('/api/entrada-productos', entradaProductoRoutes);
 
 
 export default app;
