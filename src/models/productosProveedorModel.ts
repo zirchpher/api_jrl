@@ -2,13 +2,11 @@ import { ProductoProveedor } from '../interfaces/productoProveedor';
 import pool from '../config/database';
 import { Producto } from '@interfaces/producto';
 
-export const createProductoProveedor = async (productoProveedor: ProductoProveedor): Promise<void> => {
-  const {
-    id_proveedor,
-    nombre_producto,
-    categoria,
-    precio_unitario,
-  } = productoProveedor;
+export const createProductoProveedor = async (
+  productoProveedor: ProductoProveedor
+): Promise<void> => {
+  const { id_proveedor, nombre_producto, categoria, precio_unitario } =
+    productoProveedor;
   await pool.query(
     'INSERT INTO Productos_Proveedor (id_proveedor, nombre_producto, categoria, precio_unitario) VALUES (?, ?, ?, ?)',
     [id_proveedor, nombre_producto, categoria, precio_unitario]
@@ -16,12 +14,24 @@ export const createProductoProveedor = async (productoProveedor: ProductoProveed
 };
 
 export const getProductosProveedor = async (): Promise<ProductoProveedor[]> => {
-  const [rows] = await pool.query('SELECT id, nombre_producto, categoria, precio_unitario FROM Productos_Proveedor');
+  const [rows] = await pool.query(`
+      SELECT pp.*, p.nombre_proveedor FROM productos_proveedor as pp
+      inner join proveedores as p on pp.id_proveedor = p.id;
+    `);
   return rows as ProductoProveedor[];
 };
 
-export const getProductoProveedorById = async (id: number): Promise<ProductoProveedor | null> => {
-  const [rows] = await pool.query('SELECT id, nombre_producto, categoria, precio_unitario FROM Productos_Proveedor WHERE id = ?', [id]);
+export const getProductoProveedorById = async (
+  id: number
+): Promise<ProductoProveedor | null> => {
+  const [rows] = await pool.query(
+    `
+      SELECT pp.*, p.nombre_proveedor FROM productos_proveedor as pp
+      INNER JOIN proveedores as p on pp.id_proveedor = p.id
+      WHERE p.id = ?
+    `,
+    [id]
+  );
   const productosProveedor = rows as ProductoProveedor[];
   return productosProveedor.length > 0 ? productosProveedor[0] : null;
 };
@@ -30,11 +40,7 @@ export const updateProductoProveedor = async (
   id: number,
   productoProveedor: ProductoProveedor
 ): Promise<void> => {
-  const {
-    nombre_producto,
-    categoria,
-    precio_unitario,
-  } = productoProveedor;
+  const { nombre_producto, categoria, precio_unitario } = productoProveedor;
   await pool.query(
     'UPDATE Productos_Proveedor SET nombre_producto = ?, categoria = ?, precio_unitario = ? WHERE id = ?',
     [nombre_producto, categoria, precio_unitario, id]
